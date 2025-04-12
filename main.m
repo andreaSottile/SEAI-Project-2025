@@ -2,11 +2,11 @@ function main()
     while true
         clc;
         disp('=== [DFP8 SYSTEM CONSOLE] ===');
-        disp(':: Decoding-Free Posit8 Arithmetic');
+        disp(':: Decoding-free Two-Input Arithmetic');
         disp(':: Integer Linear Optimization Interface Initialized');
-        disp('---------------------------------------------');
+        disp('----------------------------------------------------');
         disp(':: Choose which Solve Mapping version to run');
-        disp('---------------------------------------------');
+        disp('----------------------------------------------------');
         disp('1. Classic');
         disp('2. Parallel');
         disp('3. Speed');
