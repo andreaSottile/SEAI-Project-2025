@@ -4,7 +4,7 @@ function [solution,problem,json_sol] = solveMapping(n,k,op,genProblemOnly)
     %n=4
     %k=0
     Nx = (2^(n - 1) - 1);
-    %POSIT4 Example: X = [1/4, 1/2, 3/4, 1, 3/2, 2, 4];
+    % POSIT4 Example: X = [1/4, 1/2, 3/4, 1, 3/2, 2, 4];
     X = positlist(n,k)';
     Y = X; % In this case X and Y are the same
     n = length(X);  % n = 7
@@ -82,14 +82,17 @@ function [solution,problem,json_sol] = solveMapping(n,k,op,genProblemOnly)
             msg = sprintf("i:%d j:%d /n:%d",i,j,n);
 	        disp(msg);
             if j>i
-              continue
+              continue ; % Skip iterations where j > i
             end
             for p = 1:n
                 if p == i
-                    continue
+                    continue; % Skip iterations where p == i
                 end
                 for q = 1:n
                     if isequal(op,@times)
+                        if q > p
+                            continue; % Skip iterations where q > p 
+                        end
                         if X(i)*Y(j) < X(p)*Y(q)
                             row = zeros(1, numVars);
                             row(i) = 1;          % Lx(i)
@@ -106,7 +109,7 @@ function [solution,problem,json_sol] = solveMapping(n,k,op,genProblemOnly)
                         end
                     elseif isequal(op,@plus)
                         if q>p
-                            continue
+                            continue; % Skip iterations where q > p 
                         end
                         if X(j)+Y(i) < X(p)+Y(q) 
                             fprintf("Applied constraint on: %f < %f (%d,%d) < (%d,%d)\n",X(j)+Y(i),X(p)+Y(q),i,j,p,q);
@@ -124,6 +127,9 @@ function [solution,problem,json_sol] = solveMapping(n,k,op,genProblemOnly)
                             b = [b; -1];
                         end
                     elseif isequal(op,@rdivide)
+                        if q>p
+                            continue; % Skip iterations where q > p 
+                        end
                         if X(i)/Y(j) < X(p)/Y(q)   
                             row = zeros(1, numVars);
                             row(i) = 1;          % Lx(i)
@@ -139,6 +145,9 @@ function [solution,problem,json_sol] = solveMapping(n,k,op,genProblemOnly)
                             b = [b; -1];
                         end
                      elseif isequal(op,@minus)
+                        if q>p
+                            continue; % Skip iterations where q > p 
+                        end
                         if X(i)-Y(j) < X(p)-Y(q)   
                             row = zeros(1, numVars);
                             row(i) = 1;          % Lx(i)

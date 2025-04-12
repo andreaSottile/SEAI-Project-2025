@@ -105,6 +105,9 @@ function [solution, problem, json_sol] = solveMapping_parallel(n, k, op, genProb
                 end
                 for q = 1:n
                     if isequal(op, @times)
+                        if q>p
+                            continue; % Skip iterations where q > p 
+                        end
                         if X(i) * Y(j) < X(p) * Y(q)
                             row = zeros(1, numVars);
                             row(i) = 1;          % Lx(i)
@@ -138,6 +141,9 @@ function [solution, problem, json_sol] = solveMapping_parallel(n, k, op, genProb
                             tempB = [tempB; -1];
                         end
                     elseif isequal(op, @rdivide)
+                        if q>p
+                            continue; % Skip iterations where q > p 
+                        end
                         if X(i) / Y(j) < X(p) / Y(q)
                             row = zeros(1, numVars);
                             row(i) = 1;          % Lx(i)
@@ -153,6 +159,9 @@ function [solution, problem, json_sol] = solveMapping_parallel(n, k, op, genProb
                             tempB = [tempB; -1];
                         end
                     elseif isequal(op, @minus)
+                        if q>p
+                            continue; % Skip iterations where q > p 
+                        end
                         if X(i) - Y(j) < X(p) - Y(q)
                             row = zeros(1, numVars);
                             row(i) = 1;          % Lx(i)
