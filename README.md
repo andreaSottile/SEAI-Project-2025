@@ -23,7 +23,7 @@ solveMapping_speed.m    % Speed-optimized solver
 ## How to Run
 To start the **DFP System Console**, simply run the following script in MATLAB:
 ```matlab
-main
+main.m
 ```
 This will launch the interactive console interface to select the mode, Posit type, operation, and output format.
 
