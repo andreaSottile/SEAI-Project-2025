@@ -28,14 +28,14 @@ main.m
 This will launch the interactive console interface to select the mode, Posit type, operation, and output format.
 
 ## Features
-- Interactive console interface for selecting mapping mode, Posit type, and arithmetic operation.
-- Supports the following operations: **Addition, Subtraction, Multiplication, Division**.
+- Interactive console interface for selecting mapping mode, Posit type, and arithmetic operation
+- Supports the following operations: **Addition, Subtraction, Multiplication, Division**
 - Three solving modes:
-  - **Classic**: baseline algorithm.
-  - **Parallel**: parallel execution.
-  - **Speed**: optimized for performance.
-- Results exportable in JSON format.
-- Final lookup table optimized through ILP solving.
+  - **Classic**: baseline algorithm
+  - **Parallel**: parallel execution
+  - **Speed**: optimized for performance
+- Results exportable in JSON format
+- Final lookup table optimized through ILP solving
 
 ## Usage
 On startup, the system prompts the user to select the mapping mode:
@@ -63,15 +63,15 @@ Finally, specify the JSON output filename:
 Output JSON file name (e.g., result.json):
 ```
 ## Output
-The system runs an Integer Linear Programming optimization (using `intlinprog`) to construct a **lookup table** that maps operand combinations (numerator `Lx`, denominator `Ly`) to an index `Lz`, from which the result of the operation is retrieved.
+The system runs an Integer Linear Programming optimization (using `intlinprog`) to construct a **lookup table** that maps operand combinations (`Lx`, `Ly`) to a set `Lz`, from which the result of the operation is retrieved
 
 Sample output (simplified):
 
 ```
-Mapping Lx (numerator operand):
+Mapping Lx (first operand):
  0  1  2  3  5  7 15
 
-Mapping Ly (operand denominator):
+Mapping Ly (second operand):
  0  1  2  3  5  7 15
 
 Lookup table (Lz -> operation result):
@@ -81,10 +81,10 @@ Lookup table (Lz -> operation result):
  Lz = 30 --> 8.0
 ```
 
-The optimization completes when an optimal solution is found within the specified tolerance.
+The optimization completes when an optimal solution is found within the specified tolerance
 
 ## Requirements
 
-- MATLAB with support for `intlinprog` (Optimization Toolbox and Parallelization Toolbox).
-- JSON output support.
+- MATLAB with support for `intlinprog` (Optimization Toolbox and Parallelization Toolbox)
+- JSON output support
 
