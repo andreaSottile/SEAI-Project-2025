@@ -322,9 +322,9 @@ function [solution, problem, json_sol] = solveMapping_parallel(n, k, op, genProb
 
 
     % Print the results
-    disp('Mapping Lx (numerator operand):');
+    disp('Mapping Lx (first operand):');
     disp(Lx');
-    disp('Mapping Ly (operand denominator):');
+    disp('Mapping Ly (second operand):');
     disp(Ly');
     disp('Lookup table (Lz -> operation result):');
     keysLz = sort(cell2mat(fz_lookup.keys));
