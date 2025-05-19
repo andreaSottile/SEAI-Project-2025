@@ -1,4 +1,5 @@
 function main()
+    addpath('positlist')
     while true
         clc;
         disp('=== [DFP8 SYSTEM CONSOLE] ===');
